@@ -1,0 +1,717 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment 2</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3071375a-5125-806f-924f-d7da2861e898" class="page serif"><header><h1 class="page-title" dir="auto">Assignment 2</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="3071375a-5125-8069-8fd5-e45bbffcd6a7" class="">Exploratory Data Analysis</h3></div><div style="display:contents" dir="auto"><p id="3071375a-5125-809e-91ed-e24c5b1b5399" class="">Brandon Vu - vubt@mit.edu</p></div><div style="display:contents" dir="auto"><p id="3071375a-5125-80e9-b2d3-ee838d93a671" class="">
+</p></div><div style="display:contents" dir="auto"><h2 id="3071375a-5125-80f7-b2f9-ed3e17f77566" class=""><strong>Subtheme: Transit-Oriented Development</strong></h2></div><div style="display:contents" dir="auto"><p id="3071375a-5125-80a4-8488-da3503c37f74" class="">Datasets:</p></div><div style="display:contents" dir="auto"><ul id="3071375a-5125-800a-80a3-ef69e19aafb9" class="bulleted-list"><li style="list-style-type:disc"><code>MBTA Network</code></li></ul></div><div style="display:contents" dir="auto"><ul id="3071375a-5125-80e4-ab2e-fbb56760dcdc" class="bulleted-list"><li style="list-style-type:disc"><code>Residential sales data in the City of Boston, 2000-2023</code></li></ul></div><div style="display:contents" dir="auto"><p id="3071375a-5125-8065-9fb9-f24b81184439" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="3071375a-5125-8014-9d14-f352063e80e2" class="">Residential Sales Data</h3></div><div style="display:contents" dir="auto"><p id="3071375a-5125-8053-990b-fd1dbfb5830b" class="">I’m interested in understanding the dataset about Boston residential sales from 2000-2023. It has 49301 rows and 63 different attributes including address, type of property, price, date, investor types, and others. I noticed the following data quality issues.</p></div><div style="display:contents" dir="auto"><p id="3071375a-5125-8030-9b71-d39f3dcf8b60" class="">Top 5 columns with the most missing values:</p></div><div style="display:contents" dir="ltr"><table id="3071375a-5125-8062-a377-cc929c2d1e38" class="simple-table"><tbody><div style="display:contents" dir="ltr"><tr id="3071375a-5125-8076-9f02-d12c2701227a"><td id="B_rv" class=""><strong>Column Name</strong></td><td id="iA]X" class=""><strong>Missing Count</strong></td><td id="YFdY" class=""><strong>Missing Percentage</strong></td></tr></div><div style="display:contents" dir="ltr"><tr id="3071375a-5125-8013-95bc-f2a2a637265e"><td id="B_rv" class="">flip_horizon</td><td id="iA]X" class="">33,005</td><td id="YFdY" class="">66.95%</td></tr></div><div style="display:contents" dir="ltr"><tr id="3071375a-5125-806f-a432-c264def46e4e"><td id="B_rv" class="">month_horizon</td><td id="iA]X" class="">33,005</td><td id="YFdY" class="">66.95%</td></tr></div><div style="display:contents" dir="ltr"><tr id="3071375a-5125-80cb-89f4-f49483a87aae"><td id="B_rv" class="">price_diff_pch</td><td id="iA]X" class="">23,769</td><td id="YFdY" class="">48.21%</td></tr></div><div style="display:contents" dir="ltr"><tr id="3071375a-5125-8006-b049-dd67020e94e0"><td id="B_rv" class="">price_diff</td><td id="iA]X" class="">23,769</td><td id="YFdY" class="">48.21%</td></tr></div><div style="display:contents" dir="ltr"><tr id="3071375a-5125-80ab-a09b-cb7ebc51afb9"><td id="B_rv" class="">amenity</td><td id="iA]X" class="">17,392</td><td id="YFdY" class="">35.28%</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="3071375a-5125-80a9-b484-fb0f89239699" class="">Most of the sales are missing information on how long the property is kept before resale. The flip horizon, month_horizon, price difference, all rely on data from multiple transactions for a single property, which probably does not exist for most properties. This could be that buying and reselling probably operates on a larger timescale than 2000-2023. Listed amenities are also missing for 35% of the transactions.</p></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-8075-b3be-cc362c68f11d" class="image"><a href="Assignment%202/image.png"><img style="width:1008px" src="Assignment%202/image.png"/></a><figcaption>The plot here shows the price distribution in a log scale. It seems like most housing transactions are in the 1 million range. I also noticed that there are quite a few 1$ sales, which seems very unusual. These 1$ sales could be explained as ownership transfers like within a family or changing names, not actual sales of property for 1$.  The other extreme also seems problematic. There’s a 1 billion dollar transaction which seems implausible. </figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-8023-98b0-cd3c9803e747" class="image"><a href="Assignment%202/image%201.png"><img style="width:624px" src="Assignment%202/image%201.png"/></a><figcaption>Plotting the distribution of housing types, we see a lot of row-middle housing which is housing that contains multiple units but is not large apartments. We also see that there are a significant amount of not specified housing types. We don’t know if they were not labeled or part of transactions that are “spurious” like the 1$ amounts transactions.</figcaption></figure></div><div style="display:contents" dir="auto"><h3 id="3071375a-5125-80a9-a1d7-c2aee7f5b635" class="">MBTA Network</h3></div><div style="display:contents" dir="auto"><p id="3071375a-5125-8089-a27b-fdeea25bdb48" class="">This dataset consists of geographical data about the MBTA stops, lines and types of transit that exists in the greater Boston area. </p></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-80ab-96da-f49e4cfadf6b" class="image"><a href="Assignment%202/image%202.png"><img style="width:384px" src="Assignment%202/image%202.png"/></a><figcaption>Here’s an overview of the MBTA lines that exist in the dataset. The lines are centered in Boston, but sprawl out much beyond.</figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-80f7-91cb-e4922abc75ae" class="image"><a href="Assignment%202/image%203.png"><img style="width:1104px" src="Assignment%202/image%203.png"/></a><figcaption>These are the distribution of route types that exist plotted. It’s clear that the bus has the most routes in the dataset with over 300 compared to nearly 20 or so routes for rail. Ferry is a surprising mode of transit I did not realize the MBTA had, but it is cool that they do. </figcaption></figure></div><div style="display:contents" dir="auto"><h2 id="3071375a-5125-8007-a400-ce99633b3dc2" class="">Analysis Questions</h2></div><div style="display:contents" dir="auto"><h3 id="3071375a-5125-80a5-97ce-ed8a278b4460" class="">1. Do sale prices differ by distance to the nearest MBTA stop (or line)?</h3></div><div style="display:contents" dir="auto"><p id="3081375a-5125-80bd-8b11-c682110f2083" class=""><strong>Motivation: </strong>Based on TOD  <a href="https://mbtarealty.com/transit-oriented-development/">https://mbtarealty.com/transit-oriented-development/</a>  , I want to know how effective these programs are by seeing if affordable housing is being developed near transit.</p></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-80bf-9d18-e66eadbcd8a6" class="image"><a href="Assignment%202/image%204.png"><img style="width:576px" src="Assignment%202/image%204.png"/></a><figcaption>At first, generating the map of sales on a map of where MBTA transit lines exist, it appears that there is a lot of clustering of the sales data in Boston. The MBTA transit goes beyond Boston, which is not that helpful to answer my question in this visualization at this “zoom” level. To situate the data more in what is familiar to me, I want to focus on just Boston and specifically add context of the MBTA Red Line. </figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-80bd-b4a6-c972e67ba5fb" class="image"><a href="Assignment%202/image%205.png"><img style="width:624px" src="Assignment%202/image%205.png"/></a><figcaption>Here’s a zoomed-in graphic and you can see that there is clearly missing data for a lot of the big red-line train stations. This means it might be difficult to draw a relationship between the red line transit locations and property transactions, so I want to visualize other train lines too. </figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-803f-969b-cec9a5ddfd20" class="image"><a href="Assignment%202/image%206.png"><img style="width:576px" src="Assignment%202/image%206.png"/></a><figcaption>What sticks out the most here is that there is an extreme price of a house in Boston that  skews a meaningful gradient. All other housing looks similar. If we remove the outliers, we can see a pattern.</figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-8026-92e4-cf23df661266" class="image"><a href="Assignment%202/image%207.png"><img style="width:624px" src="Assignment%202/image%207.png"/></a><figcaption>After removing the outliers, we can see, there is a pattern where there is higher purchase prices along the orange line and green line specifically compared to any of the other transit types. One explanation could be that the orange line runs through downtown Boston which would be expected to have higher sale price.  In conclusion, we see that price does tend to be higher near transit lines specifically in downtown Boston along the green and orange lines. </figcaption></figure></div><div style="display:contents" dir="auto"><p id="3071375a-5125-80d3-975d-d1bfd251c96f" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="3071375a-5125-802d-8960-e588ddd7d4e3" class="">2. Among properties built in recent decades (&gt;2000), is new construction more concentrated near transit?</h3></div><div style="display:contents" dir="auto"><p id="3081375a-5125-8039-bb0a-df98ee550dde" class=""><strong>Motivation: </strong>Compared to all housing, I want to know how are newer housing projects are related to sales. For young people moving to Boston, it’s important to know how newer Boston housing is developing. Determining where these newer housing is being built and sold is important for future home-buyers. Also, according to <a href="https://www.worldbank.org/en/topic/transport/publication/transforming-the-urban-space-through-transit-oriented-development-the-3v-approach">https://www.worldbank.org/en/topic/transport/publication/transforming-the-urban-space-through-transit-oriented-development-the-3v-approach</a>, it’s important to assess the potential market value for considering development for TOD. For new properties, we should determine how well existing policies have worked to enable the buying and selling of properties near transit.</p></div><div style="display:contents" dir="ltr"><figure id="3071375a-5125-8091-a556-d94fa2bcda55" class="image"><a href="Assignment%202/image%208.png"><img style="width:528px" src="Assignment%202/image%208.png"/></a><figcaption>Spatially viewing the housing in a scatterplot, we can see that new housing is concentrated near some bus lines not subway lines. It’s also clustered in the South End. </figcaption></figure></div><div style="display:contents" dir="auto"><p id="3081375a-5125-808c-b20b-c04ede237b81" class="">A followup question that I’m curious of, is how has the price changed over time of new housing. Is the newer housing getting more expensive compared to all housing? We would expect some increase from inflation, but based on the areas where most of the new housing is located, perhaps the housing is affordable.</p></div><div style="display:contents" dir="ltr"><figure id="3081375a-5125-8044-bdd0-f65a37a12381" class="image"><a href="Assignment%202/a3fb7061-051d-4f31-9841-e35edf3c10b1.png"><img style="width:1152px" src="Assignment%202/a3fb7061-051d-4f31-9841-e35edf3c10b1.png"/></a><figcaption>The price of new housing over time steadily increases consistently more than all types of housing. This could mean that newer housing is becoming less affordable. This makes me curious what types of housing are being created?</figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3081375a-5125-80c3-a510-c7f79cdf143a" class="image"><a href="Assignment%202/b9e721fe-22be-4481-8735-db9494d5436a.png"><img style="width:1104px" src="Assignment%202/b9e721fe-22be-4481-8735-db9494d5436a.png"/></a><figcaption>In a very overwhelming way, condos (RCD) are pretty much the only new housing built. This could be because there are multiple condos being sold in a given construction building, whereas a single apartment being sold is more rare. Since multiple people could own a condo within one building, this data does not help answer how much of these condos are in high-rise versus non-high rise. </figcaption></figure></div><div style="display:contents" dir="ltr"><figure id="3081375a-5125-80ca-96bd-ee29ef91d264" class="image"><a href="Assignment%202/70b0517e-c66b-480f-ae60-c5fac87c4fd3.png"><img style="width:1056px" src="Assignment%202/70b0517e-c66b-480f-ae60-c5fac87c4fd3.png"/></a><figcaption>Looking at the <strong>style </strong>field rather than the property type, we can see in what building type these condos are being sold from. We know that Row middle makes up the majority of all housing in Boston from our second plot, but based on this plot, we see that mid and high rise housing dominates the new construction projects and sales. </figcaption></figure></div><div style="display:contents" dir="auto"><h3 id="3071375a-5125-80f0-b07e-ec468315cd51" class="">3. Where are lower-price sales (e.g. bottom quartile) relative to transit?</h3></div><div style="display:contents" dir="auto"><p id="3081375a-5125-80e7-9a30-e08097782363" class=""><strong>Motivation: </strong>I want to know whether lower-priced housing is close or far to transit, or most of the housing being sold near transit is expensive. As a future home-owner, I want to know if housing near transit is affordable or something that is mostly for the highest-paying buyers.</p></div><div style="display:contents" dir="ltr"><figure id="3081375a-5125-808b-a686-c18f14ccd39d" class="image"><a href="Assignment%202/image%209.png"><img style="width:624px" src="Assignment%202/image%209.png"/></a><figcaption>It seems like only 8.7% of lower-price sales are 1+ miles from the nearest MBTA stops. This is a great result for housing and affordability because it shows that affordable housing is being sold walking distance to MBTA stops. The limitation is that this is sales and not housing stock, so we can’t tell how much of housing exists that are close to transportation, rather if housing close to the MBTAs are being resold.</figcaption></figure></div><div style="display:contents" dir="auto"><p id="3081375a-5125-806d-bcc1-fcf5ed06fe07" class="">Another follow-up question related to affordability, is how many of these sale transactions are cash-based. Most individual people rely on mortgages to purchase housing, but investors or corporations can out-bid individuals by offering cash and buying properties as investments. </p></div><div style="display:contents" dir="ltr"><figure id="3081375a-5125-8001-8043-c81658efcd73" class="image"><a href="Assignment%202/image%2010.png"><img style="width:1152px" src="Assignment%202/image%2010.png"/></a><figcaption>This line plot shows the percentage of cash purchases of housing transactions. This is much higher than expected, but it does not seem to be growing which is a good sign for new individual buyers who are trying to enter the market.</figcaption></figure></div><div style="display:contents" dir="auto"><h2 id="3081375a-5125-80c0-9c20-ea90c19210f8" class="">Summary</h2></div><div style="display:contents" dir="auto"><p id="3081375a-5125-803e-94c0-d12f3bf0e66e" class="">For new home-buyers in Boston, it’s important to understand where housing is built and sold, as well as trends with who is buying properties and what properties types are being sold. I first focused on the cost of housing and whether there is a relationship between location and purchase price. There were clearly patterns partially related to proximity to transit along green and orange subway lines. Next, I wanted to investigate what the trends were with housing built in 2000s and on. I found that they were mostly in the South End of Boston and were dominated by units sold from mid to high rise apartments. As a lower bound, even the cheapest housing units were still close to MBTA stops which shows that MBTA has good coverage (mostly bus stops) regardless of housing price. Lastly, I wanted to see if cash purchases were on the rise, and it looks like although they increased since 2005, they are plateauing. All of these factors contribute to determining how transit and affordable housing are related based on spatial and housing purchase transaction data. To further understand affordable housing, in the future we should also look at the housing stock, not just buying and selling transactions. This would give us a sense of where people are currently living versus where people have bought and sold.  </p></div><div style="display:contents" dir="auto"><p id="3071375a-5125-801d-b94e-e2836e0cf779" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
