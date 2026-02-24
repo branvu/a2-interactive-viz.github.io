@@ -1,0 +1,719 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment 3</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="30c1375a-5125-803c-81b1-fecf81396fa3" class="page sans"><header><h1 class="page-title" dir="auto">Assignment 3</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="3111375a-5125-805e-886d-c509f4162c15" class="">Brandon Vu - vubt@mit.edu</p></div><div style="display:contents" dir="auto"><h3 id="30c1375a-5125-8078-b0bf-c630a59fa91b" class="">Insights</h3></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-8084-b63a-e076e7e9581c" class="bulleted-list"><li style="list-style-type:disc">The year is divided into 12 sections of a circle where everytime time a swirl loops, it means it’s a new year</li></ul></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-8040-8f76-d1741d6c5dc0" class="bulleted-list"><li style="list-style-type:disc">Cases start off at 0 and seem to grow more around start of 2021</li></ul></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-80ae-b3f0-f18e01297fda" class="bulleted-list"><li style="list-style-type:disc">Maximum seems to be Jan 2022 where it appears like it will keep on growing based on the trend</li></ul></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-8061-98a5-cf3db547a80d" class="bulleted-list"><li style="list-style-type:disc">There’s three waves: 2020-2021 then July 2021 to October 2021 and then Jan 2022 onwards</li></ul></div><div style="display:contents" dir="auto"><p id="30c1375a-5125-8029-977c-f5d017d83a50" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="30c1375a-5125-802e-abee-dc565c0cc5bb" class="">Critique</h3></div><div style="display:contents" dir="auto"><p id="30c1375a-5125-8061-9c18-c80fd8d27497" class="">The visualization focuses on one takeaway: the number of cases of Omicron over three years.  The visual encodings used are area and curvature, which are low on the effectiveness ranks. It does not use any color or different channels but it does use spatial region to signify the month. It uses a spiral shape to express multiple years of data, which I think is my main critique. The reader has to start at the center and follow a spiral, comparing the thickness which is being reoriented. It has the same negative effect as writing the column labels sideways causing the reader to need to tilt their head. The legend indicates that the a certain area is 150k, but it is really hard to look at the plot and estimate what the magnitude because the datapoints are all oriented differently compared to the legend (except for in 3 locations where it aligns). The labels used are the year, month, and an annotation that explains that they use a 7-day average to plot. Something that is confusing is the data lines are very smooth, despite using a 7-day average. Since there are no datapoints or indicators, I’m not sure if the line is representing a 7-day moving average, or just a 7-day average and they apply smoothing between each week. </p></div><div style="display:contents" dir="auto"><p id="30c1375a-5125-80d4-a176-fef5ba134fca" class="">I think the target audience will not easily understand the plot. This is the first time looking at a spiral plot, and it took me time to understand where to start looking, how time increases in a circle, then how area changes over a curve. It does look like the cases for Jan 2022 at the time are growing the steepest, so I can tell that the author wants to convey that the cases are growing more than it ever has since the start of the pandemic. I would say this conclusion using area encoding is not the easiest to make compared to encodings in position or length. Overall, I think this visualization is creative. It tries to focus on one trend and it does not overwhelm the reader with information, but I think it is not as effective as it could be and likely will be too difficult for the average reader to read. Especially since this is an article meant for the mass public, I think the visualization could do a better job at making the visualization more intuitive perceptually.</p></div><div style="display:contents" dir="auto"><p id="30c1375a-5125-802f-97af-fa6d51383c5b" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="30c1375a-5125-80bc-8685-c1337a7d43b2" class="">Sketches</h3></div><div style="display:contents" dir="auto"><p id="30c1375a-5125-80f5-9cbb-c2385a6afd23" class="">Sketch 1:</p></div><div style="display:contents" dir="ltr"><figure id="30c1375a-5125-80a4-ae73-c43290ca444d" class="image"><a href="Assignment%203/Note_Sep_27_2027.jpeg"><img style="width:528px" src="Assignment%203/Note_Sep_27_2027.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-809e-86cd-dcb187da7557" class="bulleted-list"><li style="list-style-type:disc">To improve on the sketch, I wanted to utilize length instead of area as the encoding</li></ul></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-80f4-a3c8-f60b7f0250fa" class="bulleted-list"><li style="list-style-type:disc">I still kept the smoothness idea because I think that does make things easier on the eyes</li></ul></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-8072-a0c1-e5ce3ec33772" class="bulleted-list"><li style="list-style-type:disc">I tried to experiment with some colors and shading, to communicate more of the message that the recent uptick in cases is something to be concerned about</li></ul></div><div style="display:contents" dir="auto"><ul id="30c1375a-5125-8017-80f1-db687a277f14" class="bulleted-list"><li style="list-style-type:disc">I want to try to include more direct annotations on the plot to “show and tell” the reader directly, and also maybe experiment with different encodings</li></ul></div><div style="display:contents" dir="auto"><p id="30d1375a-5125-8026-854e-f1c9feeec643" class="">Sketch 2:</p></div><div style="display:contents" dir="ltr"><figure id="30d1375a-5125-80bb-8ea2-dac13727b5e9" class="image"><a href="Assignment%203/Note_Sep_27_2028.jpeg"><img style="width:624px" src="Assignment%203/Note_Sep_27_2028.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-8049-9ba6-f9cdde8d26fa" class="bulleted-list"><li style="list-style-type:disc">The line chart in the previous sketch was good, but it might be too familiar and in reading group, we discussed how familiarity with certain forms like line and bar plots can cause fatigue and be less effective</li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-80e3-ae1e-ea2c6ee18246" class="bulleted-list"><li style="list-style-type:disc">I wanted to go back to the area encoding even though it’s less effective, but remove the swirling design of the original visualization</li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-80c1-8680-f00e15851d6d" class="bulleted-list"><li style="list-style-type:disc">I put annotation and labels directly on the plot this time which I think makes it more readable, but I’m not sure if my message is getting across as well as the line chart did in the first sketch.</li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-806c-9ebb-feec47d9b389" class="bulleted-list"><li style="list-style-type:disc">I want to explore a more creative direction with inverting the axis.</li></ul></div><div style="display:contents" dir="auto"><p id="30d1375a-5125-80e3-bfca-e836bbe163da" class="">
+</p></div><div style="display:contents" dir="auto"><p id="30d1375a-5125-8087-b96b-d8321d04f3a9" class="">Sketch 3:</p></div><div style="display:contents" dir="ltr"><figure id="30d1375a-5125-8055-a38b-e9ace708f879" class="image"><a href="Assignment%203/Note_Sep_27_2029.jpeg"><img style="width:691.9957275390625px" src="Assignment%203/Note_Sep_27_2029.jpeg"/></a></figure></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-80c2-923f-c568f9f4b54d" class="bulleted-list"><li style="list-style-type:disc">This graphic, I built upon the previous design of keeping the trend vertical. The previous sketch kept track of the cumulative amount of cases, whereas this one is trying to show the current horizontal slice/area how many cases there are. </li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-8062-af3a-e369849003c2" class="bulleted-list"><li style="list-style-type:disc">I removed some detail from the visualization in order to tradeoff simplicity of the trend. </li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-80cb-93bf-c0dafb3a32f7" class="bulleted-list"><li style="list-style-type:disc">I also experimented with adding dots instead of only having saturation. I think somehow the dots make a big difference in being able to understand the area better or make it more visually discerning.</li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-8067-ab84-ea825df70767" class="bulleted-list"><li style="list-style-type:disc">I added the nose in order to draw the reader’s attention. I was inspired by the reading group’s “Blood toll in Iraq” visualization that we discussed. Having a more visceral depiction makes the graphic appeal to more emotions which I would argue is necessary to convey this message</li></ul></div><div style="display:contents" dir="auto"><ul id="30d1375a-5125-805e-8475-e0e3e30f20e3" class="bulleted-list"><li style="list-style-type:disc">To improve this sketch, I would probably try to either choose saturation or texture since I think having the shading and the dots is too much to see visually. I could also try just filling the space with colored dots instead of shading.</li></ul></div><div style="display:contents" dir="auto"><p id="30e1375a-5125-80ef-b928-fb16f1543de2" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="30e1375a-5125-806c-b0dc-f238c8c95dec" class="">Final Visualization</h3></div><div style="display:contents" dir="auto"><p id="30e1375a-5125-80db-8dc9-c912c6d64a82" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="30f1375a-5125-80d2-b93d-ecf88c6dc7df" class="image"><a href="Assignment%203/A4_-_4_(4).png"><img style="width:691.9921875px" src="Assignment%203/A4_-_4_(4).png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="30f1375a-5125-803d-b1d9-cadded6c6fc3" class="">Reflection Writeup</h3></div><div style="display:contents" dir="auto"><p id="30f1375a-5125-8053-a619-e90de2e111f9" class="">The takeaway from the original visualization was that at the time (Jan 2022) the number of new cases were at the highest. I wanted to keep this as my message of my visualization as well. I built on my last sketch with a length encoding. I used a moving average (similar as the original visualization) and used the length of each bar to represent that amount. I mirrored the length across an invisible vertical axis in order to make the plot symmetric. In my last sketch, I mentioned using circles to fill in the bars instead of solid coloring. I thought that this would give more texture and make the plot more interesting to look at, but when I tried it out it obscured the trends rather than helped make it readable. I also experimented with different styles for the bars. At first they were sharp rectangles, but I since the data was a moving average which is smooth by construction, I also wanted the whole plot to have smooth features so I used rounded bars instead of default bars. Instead of averaging over a week, I increased the length of days averaged over to make the plot shorter in height. This smooths over some of the plateaus that are less noticeable now. This is a trade off of expressing more of the data versus prioritizing the trend. In terms of annotations and labeling, I wanted to simplify the message. I included direct annotations for the data around the year 2021 (198k) in order to provide numeric context and contrast for the datapoint at the start of 2022 (615k). Instead of just labeling 615k, I labeled it as “all time high” in red in order to emphasize the message. Another subtle design choice I spent time on was coloring. I chose the color of the plot to be a sort of murky and swamp color to match the “snot” aesthetic I wanted to achieve. I also chose the background as off-white to make the graphic softer on the eyes compared to an all white background. </p></div><div style="display:contents" dir="auto"><p id="30f1375a-5125-80d5-baad-e3543e4b0e8a" class="">I experimented with different titles across all the sketches. I decided on the final title by stating the message I want the reader to understand directly, “stay home”. I iterated on the description of the trend and wanted to highlight that the recent uptick is not just a gradual “rise” or increase but it is indeed a spike.</p></div><div style="display:contents" dir="auto"><p id="30f1375a-5125-8064-b761-d1d5f40b1de8" class="">I was not able to address all of the critiques I had in step 2. My main critique was that the spiral shape was not familiar and readable to the reader. In my final plot, I used an inverted axis and vertical plot, which is an improvement compared to a spiral, but can still be confusing to read. I tried to support this design choice by adding direct annotations and simplifying my presentation of the message. In making this final figure, I worked through a tension between capturing attention and having distraction. I included the nose depiction and made the visualization to illicit an “ew” emotional response to draw the reader in, but I did not want the nose depiction to throw off the reader too much. I played around with the size of the nose to make it take up less space in the graphic, and I ended up with approximately using a third of the space for the nose. More than the nose illustration, the size of the font, the annotations, and even arrows, all mattered and contributed to how the visualization is read. I tried to choose the size of these elements with their importance: title larger than year which is larger than annotations. Another critique I had for the original visualization was that the “7-day” annotation was not informative and the legend was also hard to use. I tried to solve this in my final visualization by not including what the average is over in order to focus the reader on the relative trends based more on the year than week/month. I also did not use a legend, but instead labeled the middle and last bar with their magnitudes. In doing this, I’m including less information, but I believe this helps streamline the message to the reader for the context of this visualization. Overall, I had fun making this visualization. Compared to previous sketches, I pushed myself to try something creative, and in doing so I encountered new design decisions and tradeoffs than I originally thought I would have. </p></div><div style="display:contents" dir="auto"><p id="30f1375a-5125-80e1-847a-c4cd10834e86" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

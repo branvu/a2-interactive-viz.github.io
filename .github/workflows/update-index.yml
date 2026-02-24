@@ -1,0 +1,58 @@
+name: Update index redirect
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update-index:
+    # Don't re-run if this workflow itself made the commit
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find HTML file and update index.html
+        run: |
+          HTML_FILE=$(find . -path './a2/*.html' | head -1)
+          if [ -z "$HTML_FILE" ]; then
+            echo "No HTML file found in a2 directory"
+            exit 1
+          fi
+          echo "Found: $HTML_FILE"
+
+          # URL-encode the path (encode spaces as %20, keep slashes)
+          HTML_URL=$(python3 -c "
+          import sys, urllib.parse
+          path = sys.argv[1].lstrip('./')
+          parts = path.split('/')
+          encoded = '/'.join(urllib.parse.quote(p) for p in parts)
+          print(encoded)
+          " "$HTML_FILE")
+
+          echo "Encoded URL: $HTML_URL"
+
+          cat > index.html << HTMLEOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta http-equiv="refresh" content="0; url=${HTML_URL}">
+            <script>window.location.replace("${HTML_URL}");</script>
+          </head>
+          <body>
+            <a href="${HTML_URL}">Click here if not redirected</a>
+          </body>
+          </html>
+          HTMLEOF
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && echo "No changes to index.html" && exit 0
+          git commit -m "chore: update index.html redirect"
+          git push
