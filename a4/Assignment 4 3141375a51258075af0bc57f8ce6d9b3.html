@@ -1,0 +1,718 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Assignment 4</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3141375a-5125-8075-af0b-c57f8ce6d9b3" class="page sans"><header><h1 class="page-title" dir="auto">Assignment 4</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="3141375a-5125-80f9-b3aa-e77d1201135b" class="">Brandon Vu - vubt@mit.edu</p></div><div style="display:contents" dir="auto"><p id="3141375a-5125-8083-aa62-e7d4f70f3397" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="3141375a-5125-80f0-8a77-da55a7f53757" class="">Proposition: Higher Government Spending on Education is associated with lower inequality</h3></div><div style="display:contents" dir="auto"><p id="3141375a-5125-8068-b3c4-eeff5a207ae1" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="3151375a-5125-80eb-ab08-dc71373c2e4a" class="image"><a href="Assignment%204/image.png"><img style="width:692px" src="Assignment%204/image.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="3151375a-5125-80e5-94b0-da4a0cf3139b" class="">
+</p></div><div style="display:contents" dir="auto"><ul id="3151375a-5125-801f-83ec-d8e400449ecc" class="bulleted-list"><li style="list-style-type:disc">Inverting the BINI index (inequality → equality)<div style="display:contents" dir="auto"><ul id="3171375a-5125-8025-929a-fb88e934d477" class="bulleted-list"><li style="list-style-type:circle">Score: [1] </li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-80ef-a3ce-e0de02156a07" class="bulleted-list"><li style="list-style-type:circle">I wanted readers to intuitively perceive the trend as an increase in equality rather than a decrease in inequality. I considered sticking with the original BINI index, but I realized that it was less persuasive to visualize less inequality compared to saying more equality.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3151375a-5125-809c-8c73-e08b1239e918" class="bulleted-list"><li style="list-style-type:disc">Choosing the color scheme<div style="display:contents" dir="auto"><ul id="3171375a-5125-8067-a713-dc04fc7c14f9" class="bulleted-list"><li style="list-style-type:circle">Score [-1]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-8006-9597-e6270c632232" class="bulleted-list"><li style="list-style-type:circle">I tried to be slightly deceptive in making green associated with the higher equality and red being associated with the bottom 10% spenders which also have the lowest equality.  The colors are not harsh but really light. I wanted the user to feel happy looking at the plot, seeing how education spending is having a positive social impact. I experimented with more neutral colors, but they made the plot less compelling.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-8031-b0c2-ee655b795d0c" class="bulleted-list"><li style="list-style-type:disc">Annotations <div style="display:contents" dir="auto"><ul id="3171375a-5125-80ba-9393-d284481e376c" class="bulleted-list"><li style="list-style-type:circle">Score [-1]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-800b-87f1-db9971eaf21e" class="bulleted-list"><li style="list-style-type:circle">Although there is already apparent perceptive length differences, I wanted to emphasize even more the difference in inequality between the countries that spend less and the countries that spend more on education. Labeling “7 pts higher equality” also is a very strong statement and not completely accurate because the y-axis is a proxy for equality. I don’t provide any room for interpretation on purpose in order to be as persuasive as possible. I considered instead of the “i” shape, having a line pointing from the smaller bar to the taller bar. I thought it would disturb the symmetry of the horizontal and vertical lines by having a diagonal component, so I decided to stick with the “i” shape.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3151375a-5125-806f-9b50-ea6479e128d5" class="bulleted-list"><li style="list-style-type:disc">Y axis is truncated to make relative difference bigger<div style="display:contents" dir="auto"><ul id="3171375a-5125-806b-abf1-fadca05eae4d" class="bulleted-list"><li style="list-style-type:circle">Score [-2]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-80fe-bd6e-ddbdec552a9e" class="bulleted-list"><li style="list-style-type:circle">Truncating the y-axis is a classic technique to make relative differences appear larger than they are. I used it to make the equality indexes look like they are improving by a lot in terms of bar length even though the difference is marginal compared to total magnitude of the index.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3151375a-5125-8013-849c-c4eb651f47a3" class="bulleted-list"><li style="list-style-type:disc">Missing regions South Asia and North America which is included in the World, but is actually a negative trend <div style="display:contents" dir="auto"><ul id="3171375a-5125-8054-8aef-fb6f18f45e98" class="bulleted-list"><li style="list-style-type:circle">Score [-2]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-80f6-b41c-fb0ff43bf026" class="bulleted-list"><li style="list-style-type:circle">I purposely filtered out outliers which includes North America and South Asia which didn’t have positive trends. If they were included, it would have slightly weakened the persuasiveness of the trends. I also chose to plot only the bottom 10% and top 10%. If I included a larger percentile like top 20%, there would be less increase and the argument would be less compelling.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="3151375a-5125-809d-b32b-fb542f8f6415" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="3171375a-5125-80f5-a938-cc0c1ba17f42" class="image"><a href="Assignment%204/Frame_5_(2).png"><img style="width:624px" src="Assignment%204/Frame_5_(2).png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="3181375a-5125-803b-b09c-c91558a46fba" class="bulleted-list"><li style="list-style-type:disc">Choosing to plot the slope<div style="display:contents" dir="auto"><ul id="3181375a-5125-80c8-b976-e1b42c4625cf" class="bulleted-list"><li style="list-style-type:circle">Score: [-1]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-80c6-bd1c-dc4266b95356" class="bulleted-list"><li style="list-style-type:circle">By not relying on the 10th and 90th percentiles, I avoided a measure that would filter out variability and instead preserved the noise to show that no clear trend emerges. To do that, I chose to measure the change of the equality index over the change in education spending based on all countries in each region. I chose to stick with plotting length because of it’s high perceptive effectiveness.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3181375a-5125-805d-8a5d-d6b05518e079" class="bulleted-list"><li style="list-style-type:disc">Including uncertainty<div style="display:contents" dir="auto"><ul id="3181375a-5125-80ef-a7c1-f2e0821f1855" class="bulleted-list"><li style="list-style-type:circle">Score: [1]</li></ul></div><div style="display:contents" dir="auto"><ul id="3181375a-5125-807d-a44b-c6604b5c866f" class="bulleted-list"><li style="list-style-type:circle">I included uncertainty measures to show that there is no trend not only across regions but also within individual regions. This helps the reader understand how the data isn’t just represented by a point but a distribution, and in this case a wide distribution. In contrast to the previous plot where I used a single value (length) to showcase the trend, I wanted to add another layer of data that adds nuance to the data and trend.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-8080-a135-ea4748d6c73f" class="bulleted-list"><li style="list-style-type:disc">Choose of title<div style="display:contents" dir="auto"><ul id="3181375a-5125-8043-b37a-d4f84446a910" class="bulleted-list"><li style="list-style-type:circle">Score: [-1]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-80de-8d7b-c06c69deb2dd" class="bulleted-list"><li style="list-style-type:circle">I wrote the title to persuade readers to take a stance before seeing the visual. I selected “myth” and “equalizer” for their provocative impact. Although the title is very biased, I think it’s helpful to make it clear what the reader should try to get out of the plot. </li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3181375a-5125-8051-afd3-e196007c953f" class="bulleted-list"><li style="list-style-type:disc">Spatial layout of countries<div style="display:contents" dir="auto"><ul id="3181375a-5125-8006-b013-deaefa1aa2a7" class="bulleted-list"><li style="list-style-type:circle">Score: [-1]</li></ul></div><div style="display:contents" dir="auto"><ul id="3171375a-5125-802f-a3b0-c10db6b3065c" class="bulleted-list"><li style="list-style-type:circle">Another design decision was ordering the countries. I ordered the countries so that they alternated green and red in order to emphasize that no trend exists, and that the data is unordered and messy. I experimented with having all the green and then the red. While this could work, I chose not to use it to prevent viewers from drawing conclusions based on red–green groupings, which is not a trend or takeaway I want the reader to focus on.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><p id="3181375a-5125-8056-8464-e13510c72cc6" class="">
+</p></div><div style="display:contents" dir="auto"><h3 id="3181375a-5125-8001-ba04-d2d458e1e6e8" class="">Reflection</h3></div><div style="display:contents" dir="auto"><p id="3181375a-5125-8036-bd66-f803bd10945a" class="">Creating these two visualizations was a good experience to see how both arguments of the same data can be developed and presented at the same time. It definitely makes me more skeptical of visualizations in general. Once I had the narrative I wanted to tell, I used that as my basis to iterate on decisions about titles and annotations, spatial layout, encoding type, and colors. My goal was to leave no room for interpretation, so my objective in the plots were to be as “on the nose” as possible. Usually when I make plots, I do not have the story in mind, but this was a helpful experience to understand what intentional visualization can look like when you do. Something that I wrangled with this assignment was the agency of the reader. When trying to make my plot as readable, intuitive as possible, I felt that in being explicit (in design and writing), I was reducing the agency of the reader in making their own conclusions. On one hand this is good because I think it leaves no interpretation for alternative arguments that I do not want to make. On the other hand, there is trust that the reader can build with the author if they are able to reach the same conclusions with their own judgement. If I reduce the agency of the reader, the reader might be more skeptical. For example, if my visualization includes no “weaknesses”, then maybe the reader will not take my word.</p></div><div style="display:contents" dir="auto"><p id="3181375a-5125-80cc-bf7d-f2281a136885" class="">Seeing how the same data can be used to support two opposing claims has changed how I think about ethical analysis and visualization. I now believe that ethics in this context depends not just on accuracy, but on the author’s intent. Ethical visualization requires a deliberate effort to present information clearly and honestly in a way that empowers readers to interpret evidence and draw their own conclusions. Empowering the reader while capturing their attention and balancing readability will be a tradeoff, and so I think the criteria that we use to judge visualizations should be in context. In the ideal world, I believe we need to see discussion and debate before making true conclusions. The bounds between acceptable versus misleading visualizations are blurry. I think every decision affects (some more than others) how we read a visualization, so I think it depends on the context. The context could be the topic, historical precedent, argument being made, author background, or intended audience. The decisions we make in visualization will have a different impact in different contexts and to different people, so I don’t think a bound can be drawn without considering all of these factors.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
